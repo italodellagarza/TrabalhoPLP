@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Programa para cadastro de Gibis
+ * Para a disciplina de GCC198 - PLP
+ * Universidade Federal de Lavras (UFLA), 2017
  */
 package trabalhoplp;
 
 /**
- *
- * @author Usaurios
+ * @author Ítalo Della Garza Silva
+ * @author Giovane Rezende
+ * Classe para os Gibis propriamente ditos.
  */
 public class Gibi {
     private String nome;
@@ -17,6 +18,11 @@ public class Gibi {
         this.nome = nome;
         this.editora = editora;
         this.anoPublicacao = anoPublicacao;
+    }
+    
+    // getters e setters
+    public String getNome() {
+        return this.nome;
     }
 
     @Override
