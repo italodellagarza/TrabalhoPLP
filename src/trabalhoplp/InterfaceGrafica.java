@@ -5,6 +5,8 @@
  */
 package trabalhoplp;
 
+import java.io.File;
+import javax.swing.JFileChooser;
 /**
  *
  * @author Usaurios
@@ -39,6 +41,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         painelExcluir = new javax.swing.JPanel();
         painelGravarEmArquivo = new javax.swing.JPanel();
         painelCarregarDeArquivo = new javax.swing.JPanel();
+        campoCarregarArquivo = new javax.swing.JTextField();
+        bntEscolherArquivo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnCarregarArquivo = new javax.swing.JButton();
         painelListarGibis = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -143,15 +149,55 @@ public class InterfaceGrafica extends javax.swing.JFrame {
 
         menuPrincipal.addTab("Gravar gibis em arquivo", painelGravarEmArquivo);
 
+        campoCarregarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCarregarArquivoActionPerformed(evt);
+            }
+        });
+
+        bntEscolherArquivo.setText("Pesquisar...");
+        bntEscolherArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntEscolherArquivoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Escolha o caminho para o arquivo a ser aberto:");
+
+        btnCarregarArquivo.setText("Carregar Arquivo");
+        btnCarregarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarregarArquivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelCarregarDeArquivoLayout = new javax.swing.GroupLayout(painelCarregarDeArquivo);
         painelCarregarDeArquivo.setLayout(painelCarregarDeArquivoLayout);
         painelCarregarDeArquivoLayout.setHorizontalGroup(
             painelCarregarDeArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGroup(painelCarregarDeArquivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelCarregarDeArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCarregarDeArquivoLayout.createSequentialGroup()
+                        .addComponent(campoCarregarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bntEscolherArquivo))
+                    .addComponent(jLabel1)
+                    .addComponent(btnCarregarArquivo))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         painelCarregarDeArquivoLayout.setVerticalGroup(
             painelCarregarDeArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(painelCarregarDeArquivoLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelCarregarDeArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoCarregarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCarregarArquivo)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         menuPrincipal.addTab("Carregar gibis de arquivo", painelCarregarDeArquivo);
@@ -204,6 +250,25 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoAnoPublicacaoActionPerformed
 
+    private void bntEscolherArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEscolherArquivoActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        File f = new File("dist/");
+        chooser.setCurrentDirectory(f);
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        chooser.setDialogTitle("Escolha o arquivo que deseja abrir");
+        chooser.showOpenDialog(null);
+        campoCarregarArquivo.setText(chooser.getSelectedFile().getPath());
+    }//GEN-LAST:event_bntEscolherArquivoActionPerformed
+
+    private void campoCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCarregarArquivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCarregarArquivoActionPerformed
+
+    private void btnCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarArquivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCarregarArquivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,7 +280,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows Classic".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -240,9 +305,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntEscolherArquivo;
+    private javax.swing.JButton btnCarregarArquivo;
     private javax.swing.JTextField campoAnoPublicacao;
     private javax.swing.JTextField campoAutor;
+    private javax.swing.JTextField campoCarregarArquivo;
     private javax.swing.JTextField campoTitulo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane menuPrincipal;
     private javax.swing.JPanel painelCadastrar;
