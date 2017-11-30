@@ -16,7 +16,7 @@ public class Comic extends Gibi{
     public String getGenero() {
         switch(genero) {
             case SUPER_HEROI:
-                return "Super-Heroi";
+                return "Super-Herói";
             case FAROESTE:
                 return "Faroeste";
             case HORROR:
@@ -24,7 +24,20 @@ public class Comic extends Gibi{
             case CRIME:
                 return "Crime";
         }
-        return null;
+        return null; // Nunca irá chegar aqui.
+    }
+    public Genero escolheGenero(String nomeGenero) {
+        switch(nomeGenero) {
+            case "Super-Herói":
+                return Genero.SUPER_HEROI;
+            case "Faroeste":
+                return Genero.FAROESTE;
+            case "Horror":
+                return Genero.HORROR;
+            case "Crime":
+                return Genero.CRIME;
+        }
+        return null; // Nunca irá chegar aqui.
     }
     private enum Era{PLATINA, OURO, PRATA, BRONZE, FERRO}
     private Era era;

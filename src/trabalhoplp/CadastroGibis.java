@@ -20,6 +20,7 @@ import java.util.ArrayList;
  * @author Usaurios
  */
 public class CadastroGibis {
+    public int id; // Para inserção automática de ids
     private final ArrayList<Gibi> listaGibis;
     private final ArrayList<Comic> listaComics;
     private final ArrayList<Manga> listaMangas;
@@ -27,6 +28,7 @@ public class CadastroGibis {
     private final ArrayList<Editora> listaEditoras;
     
     public CadastroGibis(){
+        id = 0;
         listaGibis = new ArrayList();
         listaComics = new ArrayList();
         listaMangas = new ArrayList();
@@ -43,17 +45,15 @@ public class CadastroGibis {
     public void buscarGibi(int idg) {
         if(this.listaGibis.isEmpty())
             System.out.println("Nao ha gibis na colecao");
-        else
-        {
-            for(Gibi g : this.listaGibis)
-            {
-                if (g.getId() == idg)
-                {
+        else {
+            for(Gibi g : this.listaGibis) {
+                if (g.getId() == idg) {
                     System.out.println(g.getId());
                     System.out.println(g.getNome());
                     System.out.println(g.getEditora());
                     System.out.println(g.getAnoPublicacao());
                     System.out.println(g.getAutor());
+
                 }
             }
         }
@@ -62,12 +62,9 @@ public class CadastroGibis {
     public void removerGibi(int idg) {
         if(this.listaGibis.isEmpty())
             System.out.println("Nao ha gibis na colecao");
-        else
-        {
-            for(Gibi g : this.listaGibis)
-            {
-                if (g.getId() == idg)
-                {
+        else {
+            for(Gibi g : this.listaGibis) {
+                if (g.getId() == idg) {
                     this.listaGibis.remove(g);
                 }
             }
@@ -77,10 +74,8 @@ public class CadastroGibis {
     public void listarGibis() {
         if(this.listaGibis.isEmpty())
             System.out.println("Nao ha gibis na colecao");
-        else
-        {
-            for(Gibi g : this.listaGibis) 
-            {
+        else {
+            for(Gibi g : this.listaGibis) {
                 System.out.println(g.getId());
                 System.out.println(g.getNome());
                 System.out.println(g.getEditora());
