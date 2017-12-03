@@ -24,4 +24,8 @@ public class Editora {
         this.telefone = telefone;
         
     }
+    
+    public String getNome() {
+        return this.nome;
+    } 
 }

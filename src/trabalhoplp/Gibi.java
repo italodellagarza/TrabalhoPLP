@@ -17,9 +17,9 @@ public class Gibi {
     private String nome;
     private String editora;
     private int anoPublicacao;
-    protected int numVolumes;
+    protected int numVolumes; // Usado somente em algumas classes herdeiras
     private String autor;
-    
+    protected String genero; // Usado somente nas classes herdadas
     /**
      * 
      * @param id
@@ -78,7 +78,7 @@ public class Gibi {
     public String getAutor() {
         return autor;
     }
-    
+   
     
     /**
      * 

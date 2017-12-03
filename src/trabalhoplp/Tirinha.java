@@ -9,32 +9,26 @@ package trabalhoplp;
  *
  * @author italo
  */
-public class Tirinha extends Gibi{
-    enum Genero{SINGLE_PANEL, DAILY_STRIP, SUNDAY_STRIP, YONKOMA}
-    private Genero genero;
+public class Tirinha extends Gibi implements ProprietarioDeGenero{
     private int numQuadrinhos;
     private String veiculoPrimeiraPublicacao;
     public String getVeiculo(){
         return this.veiculoPrimeiraPublicacao;
     }
-    public String getGenero() {
-        switch(genero) {
-            case SINGLE_PANEL:
-                return "Single Panel";
-            case DAILY_STRIP:
-                return "Daily Strip";
-            case SUNDAY_STRIP:
-                return "Sunday Strip";
-            case YONKOMA:
-                return "Yonkoma";
-        }
-        return null;
-    }
+    
     public Tirinha(int id, String nome, String editora, 
-                int anoPublicacao, String autor, Genero genero, int numQuadrinhos) {
+                int anoPublicacao, String autor, String genero, int numQuadrinhos) {
         super(id, nome, editora, anoPublicacao, autor);
-        this.genero = genero;
+        super.genero = genero;
         this.numQuadrinhos = numQuadrinhos;
         this.numVolumes = 1;
         }
+
+
+    public static final String[] GENEROS_TIRINHA = {"Single Panel","Daily Strip","Sunday Strip","Yonkoma"};
+    
+    @Override
+    public String getGenero() {
+        return super.genero;
+    }
 }

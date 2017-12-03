@@ -5,83 +5,31 @@
  */
 package trabalhoplp;
 
+
 /**
  *
  * @author italo
  */
-public class Manga extends Gibi {
-    private enum Genero{MAHO_SHOJO, MECHA, HAREM, ECCHI}
-    private Genero genero;
-    public String getGenero() {
-        switch(genero) {
-            case MAHO_SHOJO:
-                return "Mahō shōjo";
-            case MECHA:
-                return "Mecha";
-            case HAREM:
-                return "Harém";
-            case ECCHI:
-                return "Ecchi";
-        }
-        return null;
-    }
+public class Manga extends Gibi implements ProprietarioDeGenero  {
     
-    public Genero generoDoManga(String gen){
-        if (gen.equals("Mahō shōjo")) {
-            return Genero.MAHO_SHOJO;
-        }
-        else if(gen.equals("Mecha")){
-            return Genero.MECHA;
-        }
-        else if(gen.equals("Harém")){
-            return Genero.HAREM;
-        }
-        else{
-            return Genero.ECCHI;
-        }
-    }
-
-    private enum Tipologia{KODOMO, SHONEN, SHOUJO, SEINEN, JOSEI}
-    private Tipologia tipologia;
+    public static final String[] TIPOLOGIAS_MANGA = {"Kodomo","Shonen","Shoujo","Seinen"};
+    private String tipologia;
     public String getTipologia() {
-        switch(tipologia) {
-            case KODOMO:
-                return "Kodomo";
-            case SHONEN:
-                return "Shonen";
-            case SHOUJO:
-                return "Shoujo";
-            case SEINEN:
-                return "Seinen";
-            case JOSEI:
-                return "Josei";
-        }
-        return null;
-    }
-    
-    public Tipologia TipoogiaDomanga(String tip){
-        if (tip.equals("Kodomo")) {
-            return Tipologia.KODOMO;
-        }
-        else if (tip.equals("Shonen")) {
-            return Tipologia.SHONEN;
-        }
-        else if (tip.equals("Shoujo")) {
-            return Tipologia.SHOUJO;
-        }
-        else if (tip.equals("Seinen")) {
-            return Tipologia.SEINEN;
-        }
-        else{
-            return Tipologia.JOSEI;
-        }
+        return tipologia;
     }
     
     public Manga(int id, String nome, String editora, 
-            int anoPublicacao, String autor, Genero genero, int numVolumes, Tipologia tipologia) {
+            int anoPublicacao, String autor, String genero, int numVolumes, String tipologia) {
         super(id, nome, editora, anoPublicacao, autor);
-        this.genero = genero;
+        
         this.numVolumes = numVolumes;
         this.tipologia = tipologia;
+    }
+    public static String[] GENEROS_MANGA = {"Mahō shōjo","Mecha", "Harém","Ecchi"};
+    
+
+    @Override
+    public String getGenero() {
+        return super.genero;
     }
 }

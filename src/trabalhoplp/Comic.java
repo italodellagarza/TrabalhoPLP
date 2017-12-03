@@ -9,60 +9,23 @@ package trabalhoplp;
  *
  * @author italo
  */
-public class Comic extends Gibi{
-    private enum Genero{SUPER_HEROI, FAROESTE, HORROR, CRIME}
-    private Genero genero;
+public class Comic extends Gibi implements ProprietarioDeGenero{
+    public static final String[] GENEROS_COMIC  = {"Super-Herói", "Faroeste", "Horror", "Crime"};
+    public static final String[] ERAS_COMIC = {"Platina", "Ouro", "Prata", "Bronze", "Ferro"};
     private int numPaginas;
-    public String getGenero() {
-        switch(genero) {
-            case SUPER_HEROI:
-                return "Super-Herói";
-            case FAROESTE:
-                return "Faroeste";
-            case HORROR:
-                return "Horror";
-            case CRIME:
-                return "Crime";
-        }
-        return null; // Nunca irá chegar aqui.
-    }
-    public Genero escolheGenero(String nomeGenero) {
-        switch(nomeGenero) {
-            case "Super-Herói":
-                return Genero.SUPER_HEROI;
-            case "Faroeste":
-                return Genero.FAROESTE;
-            case "Horror":
-                return Genero.HORROR;
-            case "Crime":
-                return Genero.CRIME;
-        }
-        return null; // Nunca irá chegar aqui.
-    }
-    private enum Era{PLATINA, OURO, PRATA, BRONZE, FERRO}
-    private Era era;
-    public String getEra() {
-        switch(era) {
-            case PLATINA:
-                return "Platina";
-            case OURO:
-                return "Ouro";
-            case PRATA:
-                return "Prata";
-            case BRONZE:
-                return "Bronze";
-            case FERRO:
-                return "Ferro";
-        }
-        return null;
-    }
+    public String era;
     public Comic(int id, String nome, String editora, 
-            int anoPublicacao, String autor, Genero genero, int numPaginas,
-            int numVolumes, Era era) {
+            int anoPublicacao, String autor, String genero, int numPaginas,
+            int numVolumes, String era) {
         super(id, nome, editora, anoPublicacao, autor);
         this.genero = genero;
         this.numPaginas = numPaginas;
         this.numVolumes = numVolumes;
         this.era = era;
+    }
+
+    @Override
+    public String getGenero() {
+        return super.genero;
     }
 }

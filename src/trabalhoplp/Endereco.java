@@ -17,4 +17,8 @@ public class Endereco {
         this.cidade = cidade;
         this.pais = pais;
     }
+    @Override
+    public String toString() {
+        return (cidade + ", " + pais);
+    }
 }

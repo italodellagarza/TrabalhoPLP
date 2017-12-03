@@ -20,7 +20,9 @@ import java.util.ArrayList;
  * @author Usaurios
  */
 public class CadastroGibis {
-    public int id; // Para inserção automática de ids
+    private int idGibis; // Para inserção automática de ids
+    private int idEditoras;
+    
     private final ArrayList<Gibi> listaGibis;
     private final ArrayList<Comic> listaComics;
     private final ArrayList<Manga> listaMangas;
@@ -28,7 +30,8 @@ public class CadastroGibis {
     private final ArrayList<Editora> listaEditoras;
     
     public CadastroGibis(){
-        id = 0;
+        idGibis = -1;
+        idEditoras = -1;
         listaGibis = new ArrayList();
         listaComics = new ArrayList();
         listaMangas = new ArrayList();
@@ -36,9 +39,7 @@ public class CadastroGibis {
         listaEditoras = new ArrayList();
     }
     
-    public void adicionar(int id, String nome, String editora, int anoPublicacao, 
-            String autor) {
-        Gibi g = new Gibi(id, nome, editora, anoPublicacao, autor);
+    public void adicionar(Gibi g) {
         this.listaGibis.add(g);
     }
     
@@ -146,8 +147,8 @@ public class CadastroGibis {
     
     //Métodos para Editora
     
-    public void adicionarEditora(Editora e) {
-        listaEditoras.add(e);
+    public void adicionarEditora(String nome, Endereco end, String tel) {
+        listaEditoras.add(new Editora((++idEditoras), nome, end, tel.toCharArray()));
     }
     public void removerEditora(Editora e) {
         if(listaEditoras.isEmpty())
@@ -159,6 +160,14 @@ public class CadastroGibis {
         for(Editora e : listaEditoras) {
             System.out.println(e);
         }
+    }
+    
+    public String[] getListaNomeEditoras() {
+        String[] res = new String[listaEditoras.size()];
+        for (int i = 0; i < listaEditoras.size(); i++) {
+            res[i] = listaEditoras.get(i).getNome();
+        }
+        return (String[]) res;
     }
 }
 
