@@ -39,27 +39,40 @@ public class CadastroGibis {
         listaEditoras = new ArrayList();
     }
     
-    public void adicionar(Gibi g) {
+    public void adicionar(String nome, String editora, int anoPublicacao, String autor) {
+        Gibi g = new Gibi(idGibis++, nome, editora, anoPublicacao, autor);
         this.listaGibis.add(g);
     }
-    
-    public void buscarGibi(int idg) {
-        if(this.listaGibis.isEmpty())
-            System.out.println("Nao ha gibis na colecao");
-        else {
-            for(Gibi g : this.listaGibis) {
-                if (g.getId() == idg) {
-                    System.out.println(g.getId());
-                    System.out.println(g.getNome());
-                    System.out.println(g.getEditora());
-                    System.out.println(g.getAnoPublicacao());
-                    System.out.println(g.getAutor());
-
-                }
+    /**
+     *  Função para busca de gibis
+     * @param nomeGibi nome do Gibi.
+     * @return tabela de gibis com tal id.
+     */
+    public Object[][] buscarGibi(String nomeGibi) {
+        if(this.listaGibis.isEmpty()) 
+            return new Object[][]{{null, null, null,null, null}};
+        Object [][] res = new Object[5][listaGibis.size()];
+        for (int i = 0; i < listaGibis.size(); i++) {
+            if (listaGibis.get(i).getNome() == nomeGibi) {
+                res[i][0] = listaGibis.get(i).getId();
+                res[i][1] = listaGibis.get(i).getNome();
+                res[i][2] = listaGibis.get(i).getEditora();
+                res[i][3] = listaGibis.get(i).getAnoPublicacao();
+                res[i][4] = listaGibis.get(i).getAutor();
             }
         }
+        return res;
     }
+    /*
+    if(listaGibis.get(i).getNome().contains(nomePesquisa)) {
+        res[i] = listaGibis.get(i).toRow(); // toRow() método que retorna uma linha de tabela.
+    }
+    */
     
+    /**
+     * 
+     * @param idg remove pelo id
+     */
     public void removerGibi(int idg) {
         if(this.listaGibis.isEmpty())
             System.out.println("Nao ha gibis na colecao");
@@ -148,7 +161,7 @@ public class CadastroGibis {
     //Métodos para Editora
     
     public void adicionarEditora(String nome, Endereco end, String tel) {
-        listaEditoras.add(new Editora((++idEditoras), nome, end, tel.toCharArray()));
+        listaEditoras.add(new Editora((++idEditoras), nome, end, Integer.parseInt(tel)));
     }
     public void removerEditora(Editora e) {
         if(listaEditoras.isEmpty())
@@ -156,10 +169,12 @@ public class CadastroGibis {
         else
             listaEditoras.remove(e);
     }
-    public void listarEditoras() {
-        for(Editora e : listaEditoras) {
-            System.out.println(e);
+    public Object[][] listarEditoras() {
+        Object[][] res = new Object[4][listaEditoras.size()];
+        for (int i = 0; i < listaEditoras.size(); i++) {
+            res[i] = listaEditoras.get(i).toRowTable();
         }
+        return res;
     }
     
     public String[] getListaNomeEditoras() {

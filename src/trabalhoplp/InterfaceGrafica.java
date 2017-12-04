@@ -63,6 +63,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListarEditoras = new javax.swing.JTable();
         jScrollBar1 = new javax.swing.JScrollBar();
+        btnListarEditoras = new javax.swing.JButton();
         painelCadastrar = new javax.swing.JPanel();
         txtTitulo = new javax.swing.JLabel();
         campoTitulo = new javax.swing.JTextField();
@@ -297,13 +298,22 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblListarEditoras);
 
+        btnListarEditoras.setText("Listar");
+        btnListarEditoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarEditorasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListarEditoras))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -311,10 +321,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnListarEditoras)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
         );
 
@@ -842,6 +855,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         msgInserirEditora.setText("");
     }//GEN-LAST:event_cmpTelEditoraMouseClicked
 
+    private void btnListarEditorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEditorasActionPerformed
+        // TODO add your handling code here:
+        tblListarEditoras.setModel(new javax.swing.table.DefaultTableModel(controle.listarEditoras(),new String [] {
+                "id", "Nome", "Endereço", "Telefone"
+            }));
+    }//GEN-LAST:event_btnListarEditorasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -883,6 +903,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCadastrarGibi;
     private javax.swing.JButton btnCarregarArquivo;
     private javax.swing.JToggleButton btnGravarArqSaida;
+    private javax.swing.JButton btnListarEditoras;
     private javax.swing.JComboBox<String> caixaEditoras;
     private javax.swing.JComboBox<String> caixaGenero;
     private javax.swing.JTextField campoAnoPublicacao;

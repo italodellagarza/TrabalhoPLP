@@ -15,17 +15,22 @@ public class Editora {
     private int id;
     private String nome;
     private Endereco endereco;
-    private char[] telefone;
+    private int telefone;
     
-    Editora(int id, String nome, Endereco endereco, char[] telefone) {
+    Editora(int id, String nome, Endereco endereco, int telefone) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
+        System.out.println("Telefone: " + telefone);
         
     }
     
     public String getNome() {
         return this.nome;
     } 
+    
+    public Object[] toRowTable() {
+        return new Object[]{this.id, this.nome, this.endereco.toString(), this.telefone};
+    }
 }
