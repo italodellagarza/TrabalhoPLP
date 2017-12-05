@@ -14,6 +14,7 @@ public class Manga extends Gibi implements ProprietarioDeGenero  {
     
     public static final String[] TIPOLOGIAS_MANGA = {"Kodomo","Shonen","Shoujo","Seinen"};
     private String tipologia;
+    
     public String getTipologia() {
         return tipologia;
     }
@@ -27,9 +28,9 @@ public class Manga extends Gibi implements ProprietarioDeGenero  {
     }
     public static String[] GENEROS_MANGA = {"Mahō shōjo","Mecha", "Harém","Ecchi"};
     
-
     @Override
     public String getGenero() {
         return super.genero;
     }
 }
+

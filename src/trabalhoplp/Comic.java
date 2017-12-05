@@ -14,6 +14,7 @@ public class Comic extends Gibi implements ProprietarioDeGenero{
     public static final String[] ERAS_COMIC = {"Platina", "Ouro", "Prata", "Bronze", "Ferro"};
     private int numPaginas;
     public String era;
+    
     public Comic(int id, String nome, String editora, 
             int anoPublicacao, String autor, String genero, int numPaginas,
             int numVolumes, String era) {
@@ -27,5 +28,13 @@ public class Comic extends Gibi implements ProprietarioDeGenero{
     @Override
     public String getGenero() {
         return super.genero;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public String getEra() {
+        return era;
     }
 }
