@@ -21,9 +21,6 @@ import java.util.ArrayList;
  */
 public class CadastroGibis {
     private int idGibis; // Para inserção automática de ids
-    private int idComics;
-    private int idMangas;
-    private int idTirinhas;
     private int idEditoras;
     
     private final ArrayList<Gibi> listaGibis;
@@ -34,9 +31,6 @@ public class CadastroGibis {
     
     public CadastroGibis(){
         idGibis = -1;
-        idComics = -1;
-        idMangas = -1;
-        idTirinhas = -1;
         idEditoras = -1;
         listaGibis = new ArrayList();
         listaComics = new ArrayList();
@@ -46,7 +40,7 @@ public class CadastroGibis {
     }
     
     public void adicionarGibi(String nome, String editora, int anoPublicacao, String autor) {
-        Gibi g = new Gibi(this.idGibis++, nome, editora, anoPublicacao, autor);
+        Gibi g = new Gibi(++(this.idGibis), nome, editora, anoPublicacao, autor);
         this.listaGibis.add(g);
     }
     /**
@@ -115,14 +109,18 @@ public class CadastroGibis {
     
     //Métodos para Comic
     
-    public void adicionarComic(String nome, String editora, int anoPublicacao, String autor, String genero, int numPaginas,int numVolumes, String era) {
-        Comic c = new Comic(this.idComics++, nome, editora, anoPublicacao, autor, genero, numPaginas, numVolumes, era);
+    public void adicionarComic(String nome, String editora, int anoPublicacao,
+            String autor, String genero, int numPaginas,
+            int numVolumes, String era) {
+        Comic c = new Comic(++(this.idGibis), nome, editora, anoPublicacao,
+                autor, genero, numPaginas, numVolumes, era);
         this.listaComics.add(c);
     }
     
     public Object[][] buscarComic(String nomeComic) {
         if(this.listaComics.isEmpty())
-            return new Object[][]{{null, null, null, null, null, null, null, null, null}};
+            return new Object[][]{{null, null, null, null, null,
+                null, null, null, null}};
         Object [][] res = new Object[this.listaComics.size()][9];
         for (int i = 0; i < this.listaComics.size(); i++) {
             if (this.listaComics.get(i).getNome().equals(nomeComic)) {
@@ -154,7 +152,8 @@ public class CadastroGibis {
     
     public Object[][] listarComics() {
         if(this.listaComics.isEmpty())
-            return new Object[][]{{null, null, null, null, null, null, null, null, null}};
+            return new Object[][]{{null, null, null, null,
+               null, null, null, null, null}};
         Object [][] res = new Object[this.listaComics.size()][9];
         for (int i = 0; i < this.listaComics.size(); i++) {
             res[i][0] = this.listaComics.get(i).getId();
@@ -172,14 +171,17 @@ public class CadastroGibis {
     
     //Métodos para Manga
     
-    public void adicionarManga(String nome, String editora, int anoPublicacao, String autor, String genero, int numVolumes, String tipologia) {
-        Manga m = new Manga(this.idMangas++, nome, editora, anoPublicacao, autor, genero, numVolumes, tipologia);
+    public void adicionarManga(String nome, String editora, int anoPublicacao, 
+            String autor, String genero, int numVolumes, String tipologia) {
+        Manga m = new Manga(++(this.idGibis), nome, editora, anoPublicacao, 
+                autor, genero, numVolumes, tipologia);
         this.listaMangas.add(m);
     }
     
     public Object[][] buscarManga(String nomeManga) {
         if(this.listaMangas.isEmpty())
-            return new Object[][]{{null, null, null, null, null, null, null, null}};
+            return new Object[][]{{null, null, null, null, 
+                null, null, null, null}};
         Object [][] res = new Object[this.listaMangas.size()][8];
         for (int i = 0; i < this.listaMangas.size(); i++) {
             if (this.listaMangas.get(i).getNome().equals(nomeManga)) {
@@ -210,7 +212,8 @@ public class CadastroGibis {
     
     public Object[][] listarMangas() {
         if(this.listaMangas.isEmpty())
-            return new Object[][]{{null, null, null, null, null, null, null, null}};
+            return new Object[][]{{null, null, null, null, 
+                null, null, null, null}};
         Object [][] res = new Object[this.listaMangas.size()][8];
         for (int i = 0; i < this.listaMangas.size(); i++) {
                 res[i][0] = this.listaMangas.get(i).getId();
@@ -228,7 +231,7 @@ public class CadastroGibis {
     //Métodos para Tirinha
     
     public void adicionarTirinha(String nome, String editora, int anoPublicacao, String autor, String genero, int numQuadrinhos) {
-        Tirinha t = new Tirinha(this.idTirinhas++, nome, editora, anoPublicacao, autor, genero, numQuadrinhos);
+        Tirinha t = new Tirinha(++(this.idGibis), nome, editora, anoPublicacao, autor, genero, numQuadrinhos);
         this.listaTirinhas.add(t);
     }
     

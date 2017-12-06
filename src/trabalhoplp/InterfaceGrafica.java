@@ -39,6 +39,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private void initComponents() {
 
         selTipoGibi = new javax.swing.ButtonGroup();
+        selMostrarTipo = new javax.swing.ButtonGroup();
         menuPrincipal = new javax.swing.JTabbedPane();
         painelExcluir = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -56,13 +57,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         btnCarregarArquivo = new javax.swing.JButton();
         painelListarGibis = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollBar2 = new javax.swing.JScrollBar();
-        jScrollBar3 = new javax.swing.JScrollBar();
+        tblListarGibis = new javax.swing.JTable();
+        btnMostrarSomenteMangas = new javax.swing.JRadioButton();
+        btnMostrarTodosGibis = new javax.swing.JRadioButton();
+        btnMostrarSomenteTirinhas = new javax.swing.JRadioButton();
+        btnMostrarSomenteComics = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListarEditoras = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
         btnListarEditoras = new javax.swing.JButton();
         painelCadastrar = new javax.swing.JPanel();
         txtTitulo = new javax.swing.JLabel();
@@ -86,11 +88,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         cmpVeiculoPrimeiraPublicacao = new javax.swing.JTextField();
         lblVeiculoPrimeiraPub = new javax.swing.JLabel();
         lblTipologia = new javax.swing.JLabel();
-        cmpTipologia = new javax.swing.JComboBox<>();
+        caixaTipologia = new javax.swing.JComboBox<>();
         lblEra = new javax.swing.JLabel();
         cmpErasComic = new javax.swing.JComboBox<>();
         btnCadastrarGibi = new javax.swing.JToggleButton();
         msgCadastrarGibi = new javax.swing.JLabel();
+        cmpNumQuadrinhos = new javax.swing.JTextField();
+        lblNumQuadrinhos = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bntInserirEditora = new javax.swing.JButton();
         lblNomeEditora = new javax.swing.JLabel();
@@ -126,7 +130,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             painelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelExcluirLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                 .addContainerGap())
         );
         painelExcluirLayout.setVerticalGroup(
@@ -162,7 +166,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                         .addComponent(cmpNomeArqSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbltxt)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(462, Short.MAX_VALUE))
         );
         painelGravarEmArquivoLayout.setVerticalGroup(
             painelGravarEmArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +221,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                         .addComponent(bntEscolherArquivo))
                     .addComponent(jLabel1)
                     .addComponent(btnCarregarArquivo))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         painelCarregarDeArquivoLayout.setVerticalGroup(
             painelCarregarDeArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +239,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
 
         menuPrincipal.addTab("Carregar gibis de arquivo", painelCarregarDeArquivo);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -246,33 +250,77 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                 "id", "Nome", "Editora", "Ano"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblListarGibis);
 
-        jScrollBar3.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
+        selMostrarTipo.add(btnMostrarSomenteMangas);
+        btnMostrarSomenteMangas.setText("Mostrar somente mangás");
+        btnMostrarSomenteMangas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarSomenteMangasActionPerformed(evt);
+            }
+        });
+
+        selMostrarTipo.add(btnMostrarTodosGibis);
+        btnMostrarTodosGibis.setText("Mostrar todos os gibis");
+        btnMostrarTodosGibis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodosGibisActionPerformed(evt);
+            }
+        });
+
+        selMostrarTipo.add(btnMostrarSomenteTirinhas);
+        btnMostrarSomenteTirinhas.setText("Mostrar somente tirinhas");
+        btnMostrarSomenteTirinhas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarSomenteTirinhasActionPerformed(evt);
+            }
+        });
+
+        selMostrarTipo.add(btnMostrarSomenteComics);
+        btnMostrarSomenteComics.setText("Mostrar somente comics");
+        btnMostrarSomenteComics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarSomenteComicsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelListarGibisLayout = new javax.swing.GroupLayout(painelListarGibis);
         painelListarGibis.setLayout(painelListarGibisLayout);
         painelListarGibisLayout.setHorizontalGroup(
             painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelListarGibisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
-                    .addComponent(jScrollBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelListarGibisLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(painelListarGibisLayout.createSequentialGroup()
+                        .addContainerGap(82, Short.MAX_VALUE)
+                        .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrarTodosGibis)
+                            .addComponent(btnMostrarSomenteMangas))
+                        .addGap(217, 217, 217)
+                        .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrarSomenteTirinhas)
+                            .addComponent(btnMostrarSomenteComics))
+                        .addGap(0, 70, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         painelListarGibisLayout.setVerticalGroup(
             painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelListarGibisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(painelListarGibisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelListarGibisLayout.createSequentialGroup()
+                        .addComponent(btnMostrarTodosGibis)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMostrarSomenteMangas))
+                    .addGroup(painelListarGibisLayout.createSequentialGroup()
+                        .addComponent(btnMostrarSomenteTirinhas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMostrarSomenteComics)))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         menuPrincipal.addTab("Listar gibis disponíveis", painelListarGibis);
@@ -312,22 +360,19 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListarEditoras))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnListarEditoras)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnListarEditoras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(btnListarEditoras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );
 
@@ -413,6 +458,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         });
 
         lblNumVolumes.setText("Número de volumes:");
+        lblNumVolumes.setEnabled(false);
 
         lblGenero.setText("Gênero:");
         lblGenero.setEnabled(false);
@@ -426,6 +472,9 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         });
 
         lblNumPaginas.setText("Número de páginas:");
+        lblNumPaginas.setEnabled(false);
+
+        cmpNumVolumes.setEnabled(false);
 
         cmpVeiculoPrimeiraPublicacao.setEnabled(false);
 
@@ -435,8 +484,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         lblTipologia.setText("Tipologia: ");
         lblTipologia.setEnabled(false);
 
-        cmpTipologia.setModel(new javax.swing.DefaultComboBoxModel<>(listaTipologiasManga));
-        cmpTipologia.setEnabled(false);
+        caixaTipologia.setModel(new javax.swing.DefaultComboBoxModel<>(listaTipologiasManga));
+        caixaTipologia.setEnabled(false);
 
         lblEra.setText("Era:");
         lblEra.setEnabled(false);
@@ -445,8 +494,18 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         cmpErasComic.setEnabled(false);
 
         btnCadastrarGibi.setText("Cadastrar gibi");
+        btnCadastrarGibi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarGibiActionPerformed(evt);
+            }
+        });
 
         msgCadastrarGibi.setText("Inserido com Sucesso");
+
+        cmpNumQuadrinhos.setEnabled(false);
+
+        lblNumQuadrinhos.setText("Número de Quadrinhos:");
+        lblNumQuadrinhos.setEnabled(false);
 
         javax.swing.GroupLayout painelCadastrarLayout = new javax.swing.GroupLayout(painelCadastrar);
         painelCadastrar.setLayout(painelCadastrarLayout);
@@ -454,15 +513,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadastrarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(painelCadastrarLayout.createSequentialGroup()
-                        .addComponent(txtTitulo)
-                        .addGap(18, 18, 18)
-                        .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelCadastrarLayout.createSequentialGroup()
-                        .addComponent(txtAutor)
-                        .addGap(18, 18, 18)
-                        .addComponent(campoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastrarLayout.createSequentialGroup()
                         .addComponent(txtAno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -475,14 +526,6 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                         .addComponent(lblNumVolumes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmpNumVolumes))
-                    .addGroup(painelCadastrarLayout.createSequentialGroup()
-                        .addComponent(selManga)
-                        .addGap(18, 18, 18)
-                        .addComponent(selTirinha)
-                        .addGap(18, 18, 18)
-                        .addComponent(selComic)
-                        .addGap(18, 18, 18)
-                        .addComponent(selOutro))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastrarLayout.createSequentialGroup()
                         .addComponent(lblGenero)
                         .addGap(18, 18, 18)
@@ -498,12 +541,35 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                     .addGroup(painelCadastrarLayout.createSequentialGroup()
                         .addComponent(lblTipologia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmpTipologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(caixaTipologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(painelCadastrarLayout.createSequentialGroup()
                         .addComponent(lblEra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmpErasComic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(cmpErasComic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastrarLayout.createSequentialGroup()
+                        .addComponent(lblNumQuadrinhos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmpNumQuadrinhos, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastrarLayout.createSequentialGroup()
+                        .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelCadastrarLayout.createSequentialGroup()
+                                .addComponent(txtTitulo)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastrarLayout.createSequentialGroup()
+                                .addComponent(txtAutor)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastrarLayout.createSequentialGroup()
+                                .addComponent(selManga)
+                                .addGap(18, 18, 18)
+                                .addComponent(selTirinha)
+                                .addGap(18, 18, 18)
+                                .addComponent(selComic)
+                                .addGap(18, 18, 18)
+                                .addComponent(selOutro)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(194, 194, 194)
                 .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrarGibi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(msgCadastrarGibi, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -552,16 +618,20 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipologia)
-                    .addComponent(cmpTipologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(caixaTipologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCadastrarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEra)
                             .addComponent(cmpErasComic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmpNumQuadrinhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNumQuadrinhos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastrarLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(btnCadastrarGibi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)))
                 .addGroup(painelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -647,7 +717,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmpCidadeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,6 +838,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             caixaGenero.setModel(new DefaultComboBoxModel<String>(listaGenerosTirinha));
             lblVeiculoPrimeiraPub.setEnabled(true);
             cmpVeiculoPrimeiraPublicacao.setEnabled(true);
+            cmpNumQuadrinhos.setEnabled(true);
+            lblNumQuadrinhos.setEnabled(true);
             cmpNumPaginas.setEnabled(false);
             lblNumPaginas.setEnabled(false);
             lblNumVolumes.setEnabled(false);
@@ -778,6 +850,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             cmpVeiculoPrimeiraPublicacao.setEnabled(false);
             cmpNumPaginas.setEnabled(true);
             lblNumPaginas.setEnabled(true);
+            cmpNumQuadrinhos.setEnabled(false);
+            lblNumQuadrinhos.setEnabled(false);
         }
     }//GEN-LAST:event_selTirinhaItemStateChanged
 
@@ -785,14 +859,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getStateChange() == ItemEvent.SELECTED) {
             caixaGenero.setModel(new DefaultComboBoxModel<String>(listaGenerosManga));
-            cmpTipologia.setEnabled(true);
+            caixaTipologia.setEnabled(true);
             lblTipologia.setEnabled(true);
             lblNumPaginas.setEnabled(true);
             cmpNumPaginas.setEnabled(true);
             lblNumVolumes.setEnabled(true);
             cmpNumVolumes.setEnabled(true);
         } else {
-           cmpTipologia.setEnabled(false);
+           caixaTipologia.setEnabled(false);
            lblTipologia.setEnabled(false);
         }
     }//GEN-LAST:event_selMangaItemStateChanged
@@ -862,6 +936,81 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             }));
     }//GEN-LAST:event_btnListarEditorasActionPerformed
 
+    private void btnMostrarSomenteComicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteComicsActionPerformed
+        // TODO add your handling code here:
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarComics(), new String [] {
+            "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero"
+                , "Número de Páginas", "Número de Volumes", "Era"
+        }));
+    }//GEN-LAST:event_btnMostrarSomenteComicsActionPerformed
+
+    private void btnMostrarTodosGibisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosGibisActionPerformed
+        // TODO add your handling code here:
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarGibis(), new String [] {
+            "id", "Nome", "Editora", "Ano de Plublicação", "Autor"
+        }));
+    }//GEN-LAST:event_btnMostrarTodosGibisActionPerformed
+
+    private void btnMostrarSomenteMangasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteMangasActionPerformed
+        // TODO add your handling code here:
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarMangas(), new String [] {
+            "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
+                "Número de Volumes", "Tipologia" 
+        }));
+    }//GEN-LAST:event_btnMostrarSomenteMangasActionPerformed
+
+    private void btnCadastrarGibiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarGibiActionPerformed
+        if (selManga.isSelected()) {
+            controle.adicionarManga(
+                    campoTitulo.getText(),
+                    (String) caixaEditoras.getSelectedItem(), 
+                    Integer.parseInt(campoAnoPublicacao.getText()),
+                    campoAutor.getText(),
+                    (String) caixaGenero.getSelectedItem(),
+                    Integer.parseInt(cmpNumVolumes.getText()),
+                    caixaTipologia.getSelectedItem().toString()
+            );
+        } 
+        else if(selComic.isSelected()) {
+            controle.adicionarComic(
+                    campoTitulo.getText(), 
+                    (String) caixaEditoras.getSelectedItem(),
+                    Integer.parseInt(campoAnoPublicacao.getText()),
+                    campoAutor.getText(),
+                    (String) caixaGenero.getSelectedItem(),
+                    Integer.parseInt(cmpNumPaginas.getText()),
+                    Integer.parseInt(cmpNumVolumes.getText()),
+                    (String) cmpErasComic.getSelectedItem()
+            );          
+        } 
+        else if(selTirinha.isSelected()) {
+            controle.adicionarTirinha(
+                    campoTitulo.getText(), 
+                    (String) caixaEditoras.getSelectedItem(),
+                    Integer.parseInt(campoAnoPublicacao.getText()),
+                    campoAutor.getText(),
+                    (String) caixaGenero.getSelectedItem(),
+                    Integer.parseInt(cmpNumQuadrinhos.getText())
+            );
+        } 
+        else { // Outro
+            controle.adicionarGibi(
+                    campoTitulo.getText(), 
+                    (String) caixaEditoras.getSelectedItem(),
+                    Integer.parseInt(campoAnoPublicacao.getText()),
+                    campoAutor.getText()
+            ); 
+        }
+    }//GEN-LAST:event_btnCadastrarGibiActionPerformed
+
+    private void btnMostrarSomenteTirinhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteTirinhasActionPerformed
+        // TODO add your handling code here:
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarTirinha(), new String [] {
+            "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
+                "Número de Quadrinhos"
+        }));
+    }//GEN-LAST:event_btnMostrarSomenteTirinhasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -904,8 +1053,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JButton btnCarregarArquivo;
     private javax.swing.JToggleButton btnGravarArqSaida;
     private javax.swing.JButton btnListarEditoras;
+    private javax.swing.JRadioButton btnMostrarSomenteComics;
+    private javax.swing.JRadioButton btnMostrarSomenteMangas;
+    private javax.swing.JRadioButton btnMostrarSomenteTirinhas;
+    private javax.swing.JRadioButton btnMostrarTodosGibis;
     private javax.swing.JComboBox<String> caixaEditoras;
     private javax.swing.JComboBox<String> caixaGenero;
+    private javax.swing.JComboBox<String> caixaTipologia;
     private javax.swing.JTextField campoAnoPublicacao;
     private javax.swing.JTextField campoAutor;
     private javax.swing.JTextField campoCarregarArquivo;
@@ -915,10 +1069,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField cmpNomeArqSaida;
     private javax.swing.JTextField cmpNomeEditora;
     private javax.swing.JTextField cmpNumPaginas;
+    private javax.swing.JTextField cmpNumQuadrinhos;
     private javax.swing.JTextField cmpNumVolumes;
     private javax.swing.JTextField cmpPaisEditora;
     private javax.swing.JTextField cmpTelEditora;
-    private javax.swing.JComboBox<String> cmpTipologia;
     private javax.swing.JTextField cmpVeiculoPrimeiraPublicacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -928,13 +1082,9 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
-    private javax.swing.JScrollBar jScrollBar3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblAutor;
     private javax.swing.JLabel lblDadosBarra;
@@ -942,6 +1092,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNomeEditora;
     private javax.swing.JLabel lblNumPaginas;
+    private javax.swing.JLabel lblNumQuadrinhos;
     private javax.swing.JLabel lblNumVolumes;
     private javax.swing.JLabel lblTipologia;
     private javax.swing.JLabel lblVeiculoPrimeiraPub;
@@ -956,10 +1107,12 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel painelListarGibis;
     private javax.swing.JRadioButton selComic;
     private javax.swing.JRadioButton selManga;
+    private javax.swing.ButtonGroup selMostrarTipo;
     private javax.swing.JRadioButton selOutro;
     private javax.swing.ButtonGroup selTipoGibi;
     private javax.swing.JRadioButton selTirinha;
     private javax.swing.JTable tblListarEditoras;
+    private javax.swing.JTable tblListarGibis;
     private javax.swing.JLabel txtAno;
     private javax.swing.JLabel txtAutor;
     private javax.swing.JLabel txtTitulo;
