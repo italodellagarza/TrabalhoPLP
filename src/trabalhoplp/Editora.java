@@ -22,7 +22,6 @@ public class Editora {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        System.out.println("Telefone: " + telefone);
         
     }
     

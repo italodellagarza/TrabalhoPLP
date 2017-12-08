@@ -22,7 +22,7 @@ public class Manga extends Gibi implements ProprietarioDeGenero  {
     public Manga(int id, String nome, String editora, 
             int anoPublicacao, String autor, String genero, int numVolumes, String tipologia) {
         super(id, nome, editora, anoPublicacao, autor);
-        
+        this.genero = genero;
         this.numVolumes = numVolumes;
         this.tipologia = tipologia;
     }

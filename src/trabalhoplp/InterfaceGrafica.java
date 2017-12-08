@@ -8,6 +8,8 @@ package trabalhoplp;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 /**
@@ -41,9 +43,6 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         selTipoGibi = new javax.swing.ButtonGroup();
         selMostrarTipo = new javax.swing.ButtonGroup();
         menuPrincipal = new javax.swing.JTabbedPane();
-        painelExcluir = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         painelGravarEmArquivo = new javax.swing.JPanel();
         cmpNomeArqSaida = new javax.swing.JTextField();
         lbltxt = new javax.swing.JLabel();
@@ -62,7 +61,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         btnMostrarTodosGibis = new javax.swing.JRadioButton();
         btnMostrarSomenteTirinhas = new javax.swing.JRadioButton();
         btnMostrarSomenteComics = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
+        painelListarEditoras = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListarEditoras = new javax.swing.JTable();
         btnListarEditoras = new javax.swing.JButton();
@@ -95,7 +94,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         msgCadastrarGibi = new javax.swing.JLabel();
         cmpNumQuadrinhos = new javax.swing.JTextField();
         lblNumQuadrinhos = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        painelAdicionar = new javax.swing.JPanel();
         bntInserirEditora = new javax.swing.JButton();
         lblNomeEditora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -107,41 +106,20 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         cmpPaisEditora = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        painelBuscarExcluir = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        cmpNomeBusca = new javax.swing.JTextField();
+        idGibiEncontrado = new javax.swing.JLabel();
+        nomeGibiEncontrado = new javax.swing.JLabel();
+        editoraGibiEncontrado = new javax.swing.JLabel();
+        anoGibiEncontrado = new javax.swing.JLabel();
+        autorGibiEncontrado = new javax.swing.JLabel();
+        btnBuscarProximo = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        msgNenhumEncontrado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Gibis");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
-
-        javax.swing.GroupLayout painelExcluirLayout = new javax.swing.GroupLayout(painelExcluir);
-        painelExcluir.setLayout(painelExcluirLayout);
-        painelExcluirLayout.setHorizontalGroup(
-            painelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelExcluirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        painelExcluirLayout.setVerticalGroup(
-            painelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelExcluirLayout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        menuPrincipal.addTab("Excluir", painelExcluir);
 
         lbltxt.setText(".txt");
 
@@ -353,22 +331,22 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelListarEditorasLayout = new javax.swing.GroupLayout(painelListarEditoras);
+        painelListarEditoras.setLayout(painelListarEditorasLayout);
+        painelListarEditorasLayout.setHorizontalGroup(
+            painelListarEditorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelListarEditorasLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(painelListarEditorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelListarEditorasLayout.createSequentialGroup()
                         .addComponent(btnListarEditoras)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        painelListarEditorasLayout.setVerticalGroup(
+            painelListarEditorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelListarEditorasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnListarEditoras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -376,7 +354,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        menuPrincipal.addTab("Listar editoras", jPanel1);
+        menuPrincipal.addTab("Listar editoras", painelListarEditoras);
 
         txtTitulo.setText("Título:");
 
@@ -685,59 +663,59 @@ public class InterfaceGrafica extends javax.swing.JFrame {
 
         jLabel5.setText("Pais:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelAdicionarLayout = new javax.swing.GroupLayout(painelAdicionar);
+        painelAdicionar.setLayout(painelAdicionarLayout);
+        painelAdicionarLayout.setHorizontalGroup(
+            painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAdicionarLayout.createSequentialGroup()
+                .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAdicionarLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bntInserirEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(painelAdicionarLayout.createSequentialGroup()
                                     .addComponent(lblNomeEditora)
                                     .addGap(37, 37, 37)
                                     .addComponent(cmpNomeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(msgInserirEditora)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(painelAdicionarLayout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(21, 21, 21)
                                     .addComponent(cmpTelEditora)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(painelAdicionarLayout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painelAdicionarLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(31, 31, 31)
                                 .addComponent(cmpPaisEditora))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(painelAdicionarLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmpCidadeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(482, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        painelAdicionarLayout.setVerticalGroup(
+            painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAdicionarLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeEditora)
                     .addComponent(cmpNomeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(cmpCidadeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmpPaisEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelAdicionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cmpTelEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
@@ -747,7 +725,86 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
         );
 
-        menuPrincipal.addTab("Adicionar Editoras", jPanel2);
+        menuPrincipal.addTab("Adicionar Editoras", painelAdicionar);
+
+        jLabel6.setText("Nome do Gibi a ser buscado:");
+
+        idGibiEncontrado.setText("Id: ");
+
+        nomeGibiEncontrado.setText("Nome:");
+
+        editoraGibiEncontrado.setText("Editora: ");
+
+        anoGibiEncontrado.setText("Ano de Publicação: ");
+
+        autorGibiEncontrado.setText("Autor: ");
+
+        btnBuscarProximo.setText("Buscar próximo");
+        btnBuscarProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProximoActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir esse gibi");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        msgNenhumEncontrado.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout painelBuscarExcluirLayout = new javax.swing.GroupLayout(painelBuscarExcluir);
+        painelBuscarExcluir.setLayout(painelBuscarExcluirLayout);
+        painelBuscarExcluirLayout.setHorizontalGroup(
+            painelBuscarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelBuscarExcluirLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(painelBuscarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msgNenhumEncontrado)
+                    .addGroup(painelBuscarExcluirLayout.createSequentialGroup()
+                        .addComponent(btnBuscarProximo)
+                        .addGap(145, 145, 145)
+                        .addComponent(btnExcluir))
+                    .addComponent(autorGibiEncontrado)
+                    .addComponent(anoGibiEncontrado)
+                    .addComponent(editoraGibiEncontrado)
+                    .addComponent(nomeGibiEncontrado)
+                    .addComponent(idGibiEncontrado)
+                    .addGroup(painelBuscarExcluirLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmpNomeBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(241, Short.MAX_VALUE))
+        );
+        painelBuscarExcluirLayout.setVerticalGroup(
+            painelBuscarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelBuscarExcluirLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(painelBuscarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cmpNomeBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(idGibiEncontrado)
+                .addGap(18, 18, 18)
+                .addComponent(nomeGibiEncontrado)
+                .addGap(18, 18, 18)
+                .addComponent(editoraGibiEncontrado)
+                .addGap(18, 18, 18)
+                .addComponent(anoGibiEncontrado)
+                .addGap(18, 18, 18)
+                .addComponent(autorGibiEncontrado)
+                .addGap(51, 51, 51)
+                .addGroup(painelBuscarExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarProximo)
+                    .addComponent(btnExcluir))
+                .addGap(51, 51, 51)
+                .addComponent(msgNenhumEncontrado)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        menuPrincipal.addTab("Buscar e/ou Excluir Gibi", painelBuscarExcluir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -763,53 +820,125 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntEscolherArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEscolherArquivoActionPerformed
+    private void cmpPaisEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpPaisEditoraMouseClicked
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
-        File f = new File("dist/");
-        chooser.setCurrentDirectory(f);
-        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        chooser.setDialogTitle("Escolha o arquivo que deseja abrir");
-        chooser.showOpenDialog(null);
-        campoCarregarArquivo.setText(chooser.getSelectedFile().getPath());
-    }//GEN-LAST:event_bntEscolherArquivoActionPerformed
+        msgInserirEditora.setText("");
+    }//GEN-LAST:event_cmpPaisEditoraMouseClicked
 
-    private void campoCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCarregarArquivoActionPerformed
+    private void cmpTelEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpTelEditoraMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoCarregarArquivoActionPerformed
+        msgInserirEditora.setText("");
+    }//GEN-LAST:event_cmpTelEditoraMouseClicked
 
-    private void btnCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarArquivoActionPerformed
+    private void cmpCidadeEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpCidadeEditoraMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCarregarArquivoActionPerformed
+        msgInserirEditora.setText("");
+    }//GEN-LAST:event_cmpCidadeEditoraMouseClicked
 
-    private void selOutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selOutroActionPerformed
+    private void cmpNomeEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpNomeEditoraMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_selOutroActionPerformed
+        msgInserirEditora.setText("");
+    }//GEN-LAST:event_cmpNomeEditoraMouseClicked
 
-    private void selComicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selComicActionPerformed
+    private void bntInserirEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntInserirEditoraActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_selComicActionPerformed
+        if(cmpNomeEditora.getText().isEmpty() ||
+            cmpCidadeEditora.getText().isEmpty() ||
+            cmpPaisEditora.getText().isEmpty() ||
+            cmpTelEditora.getText().isEmpty()) {
+            msgInserirEditora.setText("Nenhum campo pode estar vazio.");
+            msgInserirEditora.setForeground(Color.red);
 
-    private void selTirinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selTirinhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selTirinhaActionPerformed
+        } else if(cmpTelEditora.getText().length() > 11 || !cmpTelEditora.getText().matches("[0-9]*")) {
+            msgInserirEditora.setText("O telefone deve ter somente números e, no máximo, 11 digitos.");
+            msgInserirEditora.setForeground(Color.red);
+        } else {
+            controle.adicionarEditora(cmpNomeEditora.getText(),
+                new Endereco(cmpCidadeEditora.getText(), cmpPaisEditora.getText()),
+                cmpTelEditora.getText());
+            msgInserirEditora.setText("Inserido com Sucesso");
+            msgInserirEditora.setForeground(Color.green);
+            caixaEditoras.setModel(new DefaultComboBoxModel(controle.getListaNomeEditoras()));
+        }
+    }//GEN-LAST:event_bntInserirEditoraActionPerformed
 
-    private void campoAnoPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAnoPublicacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoAnoPublicacaoActionPerformed
+    private void btnCadastrarGibiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarGibiActionPerformed
+        if (selManga.isSelected()) {
+            controle.adicionarManga(
+                campoTitulo.getText(),
+                (String) caixaEditoras.getSelectedItem(),
+                Integer.parseInt(campoAnoPublicacao.getText()),
+                campoAutor.getText(),
+                (String) caixaGenero.getSelectedItem(),
+                Integer.parseInt(cmpNumVolumes.getText()),
+                caixaTipologia.getSelectedItem().toString()
+            );
+            System.out.println((String)caixaGenero.getSelectedItem());
+        }
+        else if(selComic.isSelected()) {
+            controle.adicionarComic(
+                campoTitulo.getText(),
+                (String) caixaEditoras.getSelectedItem(),
+                Integer.parseInt(campoAnoPublicacao.getText()),
+                campoAutor.getText(),
+                (String) caixaGenero.getSelectedItem(),
+                Integer.parseInt(cmpNumPaginas.getText()),
+                Integer.parseInt(cmpNumVolumes.getText()),
+                (String) cmpErasComic.getSelectedItem()
+            );
+        }
+        else if(selTirinha.isSelected()) {
+            controle.adicionarTirinha(
+                campoTitulo.getText(),
+                (String) caixaEditoras.getSelectedItem(),
+                Integer.parseInt(campoAnoPublicacao.getText()),
+                campoAutor.getText(),
+                (String) caixaGenero.getSelectedItem(),
+                Integer.parseInt(cmpNumQuadrinhos.getText())
+            );
+        }
+        else { // Outro
+            controle.adicionarGibi(
+                campoTitulo.getText(),
+                (String) caixaEditoras.getSelectedItem(),
+                Integer.parseInt(campoAnoPublicacao.getText()),
+                campoAutor.getText()
+            );
+        }
+    }//GEN-LAST:event_btnCadastrarGibiActionPerformed
 
-    private void campoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAutorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoAutorActionPerformed
+    private void caixaGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaGeneroActionPerformed
+
+    }//GEN-LAST:event_caixaGeneroActionPerformed
 
     private void caixaEditorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaEditorasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_caixaEditorasActionPerformed
 
-    private void caixaGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaGeneroActionPerformed
-      
-    }//GEN-LAST:event_caixaGeneroActionPerformed
+    private void selOutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selOutroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selOutroActionPerformed
+
+    private void selOutroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selOutroItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED) {
+            caixaGenero.setEnabled(false);
+            lblNumPaginas.setEnabled(false);
+            cmpNumPaginas.setEnabled(false);
+            lblGenero.setEnabled(false);
+            lblNumVolumes.setEnabled(true);
+            cmpNumVolumes.setEnabled(true);
+
+        } else {
+            caixaGenero.setEnabled(true);
+            lblGenero.setEnabled(true);
+        }
+    }//GEN-LAST:event_selOutroItemStateChanged
+
+    private void selComicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selComicActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_selComicActionPerformed
 
     private void selComicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selComicItemStateChanged
 
@@ -828,6 +957,10 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selComicItemStateChanged
 
+    private void selTirinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selTirinhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selTirinhaActionPerformed
+
     private void selTirinhaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_selTirinhaStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_selTirinhaStateChanged
@@ -844,7 +977,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             lblNumPaginas.setEnabled(false);
             lblNumVolumes.setEnabled(false);
             cmpNumVolumes.setEnabled(false);
-            
+
         } else {
             lblVeiculoPrimeiraPub.setEnabled(false);
             cmpVeiculoPrimeiraPublicacao.setEnabled(false);
@@ -866,83 +999,41 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             lblNumVolumes.setEnabled(true);
             cmpNumVolumes.setEnabled(true);
         } else {
-           caixaTipologia.setEnabled(false);
-           lblTipologia.setEnabled(false);
+            caixaTipologia.setEnabled(false);
+            lblTipologia.setEnabled(false);
         }
     }//GEN-LAST:event_selMangaItemStateChanged
 
-    private void selOutroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selOutroItemStateChanged
+    private void campoAnoPublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAnoPublicacaoActionPerformed
         // TODO add your handling code here:
-        if(evt.getStateChange() == ItemEvent.SELECTED) {
-            caixaGenero.setEnabled(false);
-            lblNumPaginas.setEnabled(false);
-            cmpNumPaginas.setEnabled(false);
-            lblGenero.setEnabled(false);
-            lblNumVolumes.setEnabled(true);
-            cmpNumVolumes.setEnabled(true);
-      
-        } else {
-           caixaGenero.setEnabled(true);
-           lblGenero.setEnabled(true);
-        }
-    }//GEN-LAST:event_selOutroItemStateChanged
+    }//GEN-LAST:event_campoAnoPublicacaoActionPerformed
 
-    private void bntInserirEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntInserirEditoraActionPerformed
+    private void campoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAutorActionPerformed
         // TODO add your handling code here:
-        if(cmpNomeEditora.getText().isEmpty() ||
-           cmpCidadeEditora.getText().isEmpty() ||
-           cmpPaisEditora.getText().isEmpty() ||
-           cmpTelEditora.getText().isEmpty()) {
-           msgInserirEditora.setText("Nenhum campo pode estar vazio.");
-           msgInserirEditora.setForeground(Color.red);
-            
-        } else if(cmpTelEditora.getText().length() > 11 || !cmpTelEditora.getText().matches("[0-9]*")) {
-           msgInserirEditora.setText("O telefone deve ter somente números e, no máximo, 11 digitos.");
-           msgInserirEditora.setForeground(Color.red); 
-        } else {
-            controle.adicionarEditora(cmpNomeEditora.getText(),
-                    new Endereco(cmpCidadeEditora.getText(), cmpPaisEditora.getText()),
-                    cmpTelEditora.getText());
-            msgInserirEditora.setText("Inserido com Sucesso");
-            msgInserirEditora.setForeground(Color.green);
-            caixaEditoras.setModel(new DefaultComboBoxModel(controle.getListaNomeEditoras()));
-        }
-    }//GEN-LAST:event_bntInserirEditoraActionPerformed
-
-    private void cmpNomeEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpNomeEditoraMouseClicked
-        // TODO add your handling code here:
-        msgInserirEditora.setText("");
-    }//GEN-LAST:event_cmpNomeEditoraMouseClicked
-
-    private void cmpCidadeEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpCidadeEditoraMouseClicked
-        // TODO add your handling code here:
-        msgInserirEditora.setText("");
-    }//GEN-LAST:event_cmpCidadeEditoraMouseClicked
-
-    private void cmpPaisEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpPaisEditoraMouseClicked
-        // TODO add your handling code here:
-        msgInserirEditora.setText("");
-    }//GEN-LAST:event_cmpPaisEditoraMouseClicked
-
-    private void cmpTelEditoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpTelEditoraMouseClicked
-        // TODO add your handling code here:
-        msgInserirEditora.setText("");
-    }//GEN-LAST:event_cmpTelEditoraMouseClicked
+    }//GEN-LAST:event_campoAutorActionPerformed
 
     private void btnListarEditorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEditorasActionPerformed
         // TODO add your handling code here:
         tblListarEditoras.setModel(new javax.swing.table.DefaultTableModel(controle.listarEditoras(),new String [] {
-                "id", "Nome", "Endereço", "Telefone"
-            }));
+            "id", "Nome", "Endereço", "Telefone"
+        }));
     }//GEN-LAST:event_btnListarEditorasActionPerformed
 
     private void btnMostrarSomenteComicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteComicsActionPerformed
         // TODO add your handling code here:
         tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarComics(), new String [] {
             "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero"
-                , "Número de Páginas", "Número de Volumes", "Era"
+            , "Número de Páginas", "Número de Volumes", "Era"
         }));
     }//GEN-LAST:event_btnMostrarSomenteComicsActionPerformed
+
+    private void btnMostrarSomenteTirinhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteTirinhasActionPerformed
+        // TODO add your handling code here:
+        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarTirinha(), new String [] {
+            "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
+            "Número de Quadrinhos"
+        }));
+    }//GEN-LAST:event_btnMostrarSomenteTirinhasActionPerformed
 
     private void btnMostrarTodosGibisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosGibisActionPerformed
         // TODO add your handling code here:
@@ -955,61 +1046,77 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
         tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarMangas(), new String [] {
             "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
-                "Número de Volumes", "Tipologia" 
+            "Número de Volumes", "Tipologia"
         }));
     }//GEN-LAST:event_btnMostrarSomenteMangasActionPerformed
 
-    private void btnCadastrarGibiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarGibiActionPerformed
-        if (selManga.isSelected()) {
-            controle.adicionarManga(
-                    campoTitulo.getText(),
-                    (String) caixaEditoras.getSelectedItem(), 
-                    Integer.parseInt(campoAnoPublicacao.getText()),
-                    campoAutor.getText(),
-                    (String) caixaGenero.getSelectedItem(),
-                    Integer.parseInt(cmpNumVolumes.getText()),
-                    caixaTipologia.getSelectedItem().toString()
-            );
-        } 
-        else if(selComic.isSelected()) {
-            controle.adicionarComic(
-                    campoTitulo.getText(), 
-                    (String) caixaEditoras.getSelectedItem(),
-                    Integer.parseInt(campoAnoPublicacao.getText()),
-                    campoAutor.getText(),
-                    (String) caixaGenero.getSelectedItem(),
-                    Integer.parseInt(cmpNumPaginas.getText()),
-                    Integer.parseInt(cmpNumVolumes.getText()),
-                    (String) cmpErasComic.getSelectedItem()
-            );          
-        } 
-        else if(selTirinha.isSelected()) {
-            controle.adicionarTirinha(
-                    campoTitulo.getText(), 
-                    (String) caixaEditoras.getSelectedItem(),
-                    Integer.parseInt(campoAnoPublicacao.getText()),
-                    campoAutor.getText(),
-                    (String) caixaGenero.getSelectedItem(),
-                    Integer.parseInt(cmpNumQuadrinhos.getText())
-            );
-        } 
-        else { // Outro
-            controle.adicionarGibi(
-                    campoTitulo.getText(), 
-                    (String) caixaEditoras.getSelectedItem(),
-                    Integer.parseInt(campoAnoPublicacao.getText()),
-                    campoAutor.getText()
-            ); 
-        }
-    }//GEN-LAST:event_btnCadastrarGibiActionPerformed
-
-    private void btnMostrarSomenteTirinhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarSomenteTirinhasActionPerformed
+    private void btnCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarArquivoActionPerformed
         // TODO add your handling code here:
-        tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarTirinha(), new String [] {
-            "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
-                "Número de Quadrinhos"
-        }));
-    }//GEN-LAST:event_btnMostrarSomenteTirinhasActionPerformed
+    }//GEN-LAST:event_btnCarregarArquivoActionPerformed
+
+    private void bntEscolherArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEscolherArquivoActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        File f = new File("dist/");
+        chooser.setCurrentDirectory(f);
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        chooser.setDialogTitle("Escolha o arquivo que deseja abrir");
+        chooser.showOpenDialog(null);
+        campoCarregarArquivo.setText(chooser.getSelectedFile().getPath());
+    }//GEN-LAST:event_bntEscolherArquivoActionPerformed
+
+    private void campoCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCarregarArquivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCarregarArquivoActionPerformed
+
+    private List<Gibi> anteriores = new ArrayList<Gibi>();
+    private void btnBuscarProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProximoActionPerformed
+        msgNenhumEncontrado.setText("");
+        Gibi g;
+        if(anteriores.isEmpty())
+            g = controle.buscarGibi(cmpNomeBusca.getText());
+        else {
+            g = controle.buscarGibi(cmpNomeBusca.getText(), anteriores);
+            if(cmpNomeBusca.getText().equals(anteriores.get(0).getNome())) {
+                anteriores.clear();
+                idGibiEncontrado.setText("Id: ");
+                nomeGibiEncontrado.setText("Nome: ");
+                anoGibiEncontrado.setText("Ano de Publicação: ");
+                autorGibiEncontrado.setText("Autor: ");
+            }
+        }
+        if(g != null){
+            anteriores.add(g);
+            idGibiEncontrado.setText("Id: " + Integer.toString(g.getId()));
+            nomeGibiEncontrado.setText("Nome: " + g.getNome());
+            anoGibiEncontrado.setText("Ano de Publicação: " + Integer
+                    .toString(g.getAnoPublicacao()));
+            autorGibiEncontrado.setText("Autor: " + g.getAutor());
+            autorGibiEncontrado.setText("Editora: " + g.getEditora());
+        } else {
+            msgNenhumEncontrado.setText("Nenhum Encontrado");
+        }
+    }//GEN-LAST:event_btnBuscarProximoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        Gibi g = anteriores.get(anteriores.size() -1);
+        if(g.getClass() == Manga.class) {
+            Manga m = (Manga) g;
+            controle.removerManga(m);
+        }
+        else if(g.getClass() == Tirinha.class) {
+            Tirinha t = (Tirinha) g;
+            controle.removerTirinha(t);
+        }
+        else if(g.getClass() == Comic.class) {
+            Comic c = (Comic) g;
+            controle.removerComic(c);
+        }
+        else {
+            controle.removerGibi(g);
+        }
+        anteriores.remove(g);
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1047,10 +1154,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel anoGibiEncontrado;
+    private javax.swing.JLabel autorGibiEncontrado;
     private javax.swing.JButton bntEscolherArquivo;
     private javax.swing.JButton bntInserirEditora;
+    private javax.swing.JButton btnBuscarProximo;
     private javax.swing.JToggleButton btnCadastrarGibi;
     private javax.swing.JButton btnCarregarArquivo;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JToggleButton btnGravarArqSaida;
     private javax.swing.JButton btnListarEditoras;
     private javax.swing.JRadioButton btnMostrarSomenteComics;
@@ -1067,6 +1178,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField cmpCidadeEditora;
     private javax.swing.JComboBox<String> cmpErasComic;
     private javax.swing.JTextField cmpNomeArqSaida;
+    private javax.swing.JTextField cmpNomeBusca;
     private javax.swing.JTextField cmpNomeEditora;
     private javax.swing.JTextField cmpNumPaginas;
     private javax.swing.JTextField cmpNumQuadrinhos;
@@ -1074,18 +1186,17 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField cmpPaisEditora;
     private javax.swing.JTextField cmpTelEditora;
     private javax.swing.JTextField cmpVeiculoPrimeiraPublicacao;
+    private javax.swing.JLabel editoraGibiEncontrado;
+    private javax.swing.JLabel idGibiEncontrado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblAutor;
     private javax.swing.JLabel lblDadosBarra;
     private javax.swing.JLabel lblEra;
@@ -1100,10 +1211,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     private javax.swing.JTabbedPane menuPrincipal;
     private javax.swing.JLabel msgCadastrarGibi;
     private javax.swing.JLabel msgInserirEditora;
+    private javax.swing.JLabel msgNenhumEncontrado;
+    private javax.swing.JLabel nomeGibiEncontrado;
+    private javax.swing.JPanel painelAdicionar;
+    private javax.swing.JPanel painelBuscarExcluir;
     private javax.swing.JPanel painelCadastrar;
     private javax.swing.JPanel painelCarregarDeArquivo;
-    private javax.swing.JPanel painelExcluir;
     private javax.swing.JPanel painelGravarEmArquivo;
+    private javax.swing.JPanel painelListarEditoras;
     private javax.swing.JPanel painelListarGibis;
     private javax.swing.JRadioButton selComic;
     private javax.swing.JRadioButton selManga;

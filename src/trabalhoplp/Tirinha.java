@@ -15,7 +15,7 @@ public class Tirinha extends Gibi implements ProprietarioDeGenero{
     
     public Tirinha(int id, String nome, String editora, int anoPublicacao, String autor, String genero, int numQuadrinhos) {
         super(id, nome, editora, anoPublicacao, autor);
-        super.genero = genero;
+        this.genero = genero;
         this.numQuadrinhos = numQuadrinhos;
         this.numVolumes = 1;
     }

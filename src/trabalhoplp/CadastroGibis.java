@@ -6,13 +6,12 @@
 package trabalhoplp;
 
 
-import java.io.BufferedReader;
 import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
@@ -38,51 +37,75 @@ public class CadastroGibis {
         listaTirinhas = new ArrayList();
         listaEditoras = new ArrayList();
     }
-    
+    /**
+     * Função para adicionar um gibi qualquer.
+     * @param nome
+     * @param editora
+     * @param anoPublicacao
+     * @param autor 
+     */
     public void adicionarGibi(String nome, String editora, int anoPublicacao, String autor) {
         Gibi g = new Gibi(++(this.idGibis), nome, editora, anoPublicacao, autor);
         this.listaGibis.add(g);
     }
     /**
-     *  Função para busca de gibis
+     *  Função para busca de gibis (retorna o primeiro encontrado)
      * @param nomeGibi nome do Gibi.
-     * @return tabela de gibis com tal id.
+     * @return primeiro gibi encontrado.
      */
-    public Object[][] buscarGibi(String nomeGibi) {
-        if(this.listaGibis.isEmpty()) 
-            return new Object[][]{{null, null, null, null, null}};
-        Object [][] res = new Object[this.listaGibis.size()][5];
-        for (int i = 0; i < this.listaGibis.size(); i++) {
-            if (this.listaGibis.get(i).getNome().equals(nomeGibi)) {
-                res[i][0] = this.listaGibis.get(i).getId();
-                res[i][1] = this.listaGibis.get(i).getNome();
-                res[i][2] = this.listaGibis.get(i).getEditora();
-                res[i][3] = this.listaGibis.get(i).getAnoPublicacao();
-                res[i][4] = this.listaGibis.get(i).getAutor();
-            }
+    public Gibi buscarGibi(String nomeGibi) {
+        for (Gibi g: listaGibis) {
+            if(g.getNome().equals(nomeGibi))
+                return g;
         }
-        return res;
+        for (Manga m: listaMangas) {
+            if(m.getNome().equals(nomeGibi))
+                return (Gibi)m;
+        }
+        for (Tirinha t: listaTirinhas) {
+            if(t.getNome().equals(nomeGibi))
+                return (Gibi)t;
+        }
+        for (Comic c: listaComics) {
+            if(c.getNome().equals(nomeGibi))
+                return (Gibi)c;
+        }
+        return null;
     }
-    /*
-    if(listaGibis.get(i).getNome().contains(nomePesquisa)) {
-        res[i] = listaGibis.get(i).toRow(); // toRow() método que retorna uma linha de tabela.
+    
+     /**
+     *  Função para busca de gibis (retorna o primeiro encontrado que não
+     *  está na lista de próximos)
+     * @param nomeGibi nome do Gibi.
+     * @param anteriores lista com os gibis que já foram pesquisados
+     * @return primeiro gibi encontrado.
+     */
+    public Gibi buscarGibi(String nomeGibi, List<Gibi> anteriores) {
+        for (Gibi g: listaGibis) {
+            if(g.getNome().equals(nomeGibi) && !anteriores.contains(g))
+                return g;
+        }
+        for (Manga m: listaMangas) {
+            if(m.getNome().equals(nomeGibi) && !anteriores.contains(m))
+                return (Gibi)m;
+        }
+        for (Tirinha t: listaTirinhas) {
+            if(t.getNome().equals(nomeGibi) && !anteriores.contains(t))
+                return (Gibi)t;
+        }
+        for (Comic c: listaComics) {
+            if(c.getNome().equals(nomeGibi) && !anteriores.contains(c))
+                return (Gibi)c;
+        }
+        return null;
     }
-    */
     
     /**
-     * 
-     * @param nomeGibi remove pelo id
+     *  Remove um gibi
+     * @param id
      */
-    public void removerGibi(String nomeGibi) {
-        if(this.listaGibis.isEmpty())
-        {}
-        else {
-            for(Gibi g : this.listaGibis) {
-                if (g.getNome().equals(nomeGibi)) {
-                    this.listaGibis.remove(g);
-                }
-            }
-        }
+    public void removerGibi(Gibi g) {
+        this.listaGibis.remove(g);
     }
     
     public Object[][] listarGibis() {
@@ -99,12 +122,62 @@ public class CadastroGibis {
         return res;
     }
     
-    public void gravarGibisEmArquivo() {
-        
+    public Object[][] listarTodos() {
+        List<Gibi> listaCompleta = new ArrayList<Gibi>();
+        listaCompleta.addAll(listaGibis);
+        listaCompleta.addAll(listaMangas);
+        listaCompleta.addAll(listaComics);
+        listaCompleta.addAll(listaTirinhas);
+        if(listaCompleta.isEmpty()) 
+            return new Object[][]{{null, null, null, null, null}};
+        Object [][] res = new Object[listaCompleta.size()][5];
+        for (int i = 0; i < listaCompleta.size(); i++) {
+            res[i][0] = listaCompleta.get(i).getId();
+            res[i][1] = listaCompleta.get(i).getNome();
+            res[i][2] = listaCompleta.get(i).getEditora();
+            res[i][3] = listaCompleta.get(i).getAnoPublicacao();
+            res[i][4] = listaCompleta.get(i).getAutor();
+        }
+        return res;
     }
     
-    public void carregarGibisDeArquivo() {
-        
+    public void gravarGibisEmArquivo(String nome) throws IOException {
+        File f = new File(nome);
+        PrintWriter arqSaida = new PrintWriter(f);
+        arqSaida.print(listaEditoras.size());
+        for(Editora e: listaEditoras) {
+           arqSaida.print(e); 
+        }
+        arqSaida.print(listaGibis.size());
+        for(Gibi g: listaGibis) {
+           arqSaida.print(g); 
+        }
+        arqSaida.println(listaMangas.size());
+        for(Manga m: listaMangas) {
+           arqSaida.print(m); 
+        }
+        arqSaida.println(listaTirinhas.size());
+        for(Tirinha t: listaTirinhas) {
+           arqSaida.print(t); 
+        }
+        arqSaida.println(listaComics.size());
+        for(Comic c: listaComics) {
+           arqSaida.print(c); 
+        }
+    }
+    
+    public void carregarGibisDeArquivo(String nome) throws FileNotFoundException {
+        File f = new File(nome);
+        Scanner arqEntrada = new Scanner(f);
+        if(arqEntrada.hasNext()) {
+            int tamEditoras = arqEntrada.nextInt();
+            for (int i = 0; i < tamEditoras; i++) {
+                // TODO Terminar esse método e documentar.
+            }
+        }
+        else {
+            
+        }
     }
     
     //Métodos para Comic
@@ -117,37 +190,9 @@ public class CadastroGibis {
         this.listaComics.add(c);
     }
     
-    public Object[][] buscarComic(String nomeComic) {
-        if(this.listaComics.isEmpty())
-            return new Object[][]{{null, null, null, null, null,
-                null, null, null, null}};
-        Object [][] res = new Object[this.listaComics.size()][9];
-        for (int i = 0; i < this.listaComics.size(); i++) {
-            if (this.listaComics.get(i).getNome().equals(nomeComic)) {
-                res[i][0] = this.listaComics.get(i).getId();
-                res[i][1] = this.listaComics.get(i).getNome();
-                res[i][2] = this.listaComics.get(i).getEditora();
-                res[i][3] = this.listaComics.get(i).getAnoPublicacao();
-                res[i][4] = this.listaComics.get(i).getAutor();
-                res[i][5] = this.listaComics.get(i).genero;
-                res[i][6] = this.listaComics.get(i).getNumPaginas();
-                res[i][7] = this.listaComics.get(i).numVolumes;
-                res[i][8] = this.listaComics.get(i).getEra();
-            }
-        }
-        return res;
-    }
     
-    public void removerComic(String nomeComic) {
-        if(this.listaComics.isEmpty())
-        {}
-        else {
-            for(Comic c : this.listaComics) {
-                if (c.getNome().equals(nomeComic)) {
-                    this.listaComics.remove(c);
-                }
-            }
-        }
+    public void removerComic(Comic c) {
+        listaComics.remove(c);
     }
     
     public Object[][] listarComics() {
@@ -178,36 +223,9 @@ public class CadastroGibis {
         this.listaMangas.add(m);
     }
     
-    public Object[][] buscarManga(String nomeManga) {
-        if(this.listaMangas.isEmpty())
-            return new Object[][]{{null, null, null, null, 
-                null, null, null, null}};
-        Object [][] res = new Object[this.listaMangas.size()][8];
-        for (int i = 0; i < this.listaMangas.size(); i++) {
-            if (this.listaMangas.get(i).getNome().equals(nomeManga)) {
-                res[i][0] = this.listaMangas.get(i).getId();
-                res[i][1] = this.listaMangas.get(i).getNome();
-                res[i][2] = this.listaMangas.get(i).getEditora();
-                res[i][3] = this.listaMangas.get(i).getAnoPublicacao();
-                res[i][4] = this.listaMangas.get(i).getAutor();
-                res[i][5] = this.listaMangas.get(i).genero;
-                res[i][6] = this.listaMangas.get(i).numVolumes;
-                res[i][7] = this.listaMangas.get(i).getTipologia();
-            }
-        }
-        return res;
-    }
     
-    public void removerManga(String nomeManga) {
-        if(this.listaMangas.isEmpty())
-        {}
-        else {
-            for(Manga m : this.listaMangas) {
-                if (m.getNome().equals(nomeManga)) {
-                    this.listaMangas.remove(m);
-                }
-            }
-        }
+    public void removerManga(Manga m) {
+        this.listaMangas.remove(m);
     }
     
     public Object[][] listarMangas() {
@@ -235,34 +253,9 @@ public class CadastroGibis {
         this.listaTirinhas.add(t);
     }
     
-    public Object[][] buscarTirinha(String nomeTirinha) {
-        if(this.listaTirinhas.isEmpty())
-            return new Object[][]{{null, null, null, null, null, null, null}};
-        Object [][] res = new Object[this.listaTirinhas.size()][7];
-        for (int i = 0; i < this.listaTirinhas.size(); i++) {
-            if (this.listaTirinhas.get(i).getNome().equals(nomeTirinha)) {
-                res[i][0] = this.listaTirinhas.get(i).getId();
-                res[i][1] = this.listaTirinhas.get(i).getNome();
-                res[i][2] = this.listaTirinhas.get(i).getEditora();
-                res[i][3] = this.listaTirinhas.get(i).getAnoPublicacao();
-                res[i][4] = this.listaTirinhas.get(i).getAutor();
-                res[i][5] = this.listaTirinhas.get(i).genero;
-                res[i][6] = this.listaTirinhas.get(i).getNumQuadrinhos();
-            }
-        }
-        return res;
-    }
     
-    public void removerTirinha(String nomeTirinha) {
-        if(this.listaTirinhas.isEmpty())
-        {}
-        else {
-            for(Tirinha t : this.listaTirinhas) {
-                if (t.getNome().equals(nomeTirinha)) {
-                    this.listaTirinhas.remove(t);
-                }
-            }
-        }
+    public void removerTirinha(Tirinha t) {
+        this.listaGibis.remove(t);
     }
     
     public Object[][] listarTirinha() {
@@ -286,12 +279,7 @@ public class CadastroGibis {
     public void adicionarEditora(String nome, Endereco end, String tel) {
         listaEditoras.add(new Editora((++idEditoras), nome, end, Integer.parseInt(tel)));
     }
-    public void removerEditora(Editora e) {
-        if(listaEditoras.isEmpty())
-            System.out.println("Nao ha editoras na colecao");
-        else
-            listaEditoras.remove(e);
-    }
+
     public Object[][] listarEditoras() {
         Object[][] res = new Object[4][listaEditoras.size()];
         for (int i = 0; i < listaEditoras.size(); i++) {
