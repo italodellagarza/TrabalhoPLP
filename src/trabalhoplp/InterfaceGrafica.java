@@ -1,15 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Trabalho de Paradigmas de Linguagens de Programação
+ * Cadastro de Gibis
+ * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe
+ * Classe InterfaceGrafica (InterfaceGrafica.java)
  */
 package trabalhoplp;
 
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 /**
@@ -128,6 +132,11 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jLabel8.setText("Nome do arquivo de saída:");
 
         btnGravarArqSaida.setText("Gravar Arquivo de Saída");
+        btnGravarArqSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarArqSaidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelGravarEmArquivoLayout = new javax.swing.GroupLayout(painelGravarEmArquivo);
         painelGravarEmArquivo.setLayout(painelGravarEmArquivoLayout);
@@ -894,7 +903,8 @@ public class InterfaceGrafica extends javax.swing.JFrame {
                 Integer.parseInt(campoAnoPublicacao.getText()),
                 campoAutor.getText(),
                 (String) caixaGenero.getSelectedItem(),
-                Integer.parseInt(cmpNumQuadrinhos.getText())
+                Integer.parseInt(cmpNumQuadrinhos.getText()),
+                cmpVeiculoPrimeiraPublicacao.getText()
             );
         }
         else { // Outro
@@ -1031,7 +1041,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
         tblListarGibis.setModel(new javax.swing.table.DefaultTableModel(controle.listarTirinha(), new String [] {
             "id", "Nome", "Editora", "Ano de Plublicação", "Autor", "Genero",
-            "Número de Quadrinhos"
+            "Número de Quadrinhos", "Veículo da primeira publicação"
         }));
     }//GEN-LAST:event_btnMostrarSomenteTirinhasActionPerformed
 
@@ -1117,6 +1127,14 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         }
         anteriores.remove(g);
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnGravarArqSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarArqSaidaActionPerformed
+        try {
+            controle.gravarGibisEmArquivo("dados/" + cmpNomeArqSaida.getText()+ ".txt");
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGravarArqSaidaActionPerformed
 
     /**
      * @param args the command line arguments

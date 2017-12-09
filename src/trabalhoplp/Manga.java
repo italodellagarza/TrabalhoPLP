@@ -1,14 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Trabalho de Paradigmas de Linguagens de Programação
+ * Cadastro de Gibis
+ * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe
+ * Classe Manga (Manga.java)
  */
 package trabalhoplp;
 
 
 /**
- *
- * @author italo
+ * Classe Manga que herda atributos de Gibi e implementa ProprietarioDeGenero.
+ * @author Ítalo Della Garza Silva
+ * @author Giovani Ferreira Andrade Botelho
+ * @author Felipe
  */
 public class Manga extends Gibi implements ProprietarioDeGenero  {
     
@@ -31,6 +34,14 @@ public class Manga extends Gibi implements ProprietarioDeGenero  {
     @Override
     public String getGenero() {
         return super.genero;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\n" +
+               this.genero + "\n" +
+               this.numVolumes + "\n" +
+               this.tipologia;
     }
 }
 

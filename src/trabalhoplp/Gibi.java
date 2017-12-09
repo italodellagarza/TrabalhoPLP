@@ -1,4 +1,4 @@
-/**
+/*
  * Trabalho de Paradigmas de Linguagens de Programação
  * Cadastro de Gibis
  * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe
@@ -7,10 +7,10 @@
 package trabalhoplp;
 
 /**
- *
+ * Classe para os Gibis propriamente ditos.
  * @author Ítalo Della Garza Silva
  * @author Giovani Ferreira Andrade Botelho
- * Classe para os Gibis propriamente ditos.
+ * @author Felipe
  */
 public class Gibi {
     private int id;
@@ -21,12 +21,12 @@ public class Gibi {
     private String autor;
     protected String genero; // Usado somente nas classes herdadas
     /**
-     * 
-     * @param id
-     * @param nome
-     * @param editora
-     * @param anoPublicacao
-     * @param autor
+     * Construtor de classe.
+     * @param id Identificador (único).
+     * @param nome Nome do gibi.
+     * @param editora Nome da editora do Gibi.
+     * @param anoPublicacao Ano de Publicação do Gibi.
+     * @param autor Autor do Gibi.
      */
     public Gibi(int id, String nome, String editora, int anoPublicacao, 
             String autor) {
@@ -44,35 +44,35 @@ public class Gibi {
         this.autor = "";
     }
     /**
-     * 
+     * Retornar o nome do gibi.
      * @return nome
      */
     public String getNome() {
         return this.nome;
     }
     /**
-     * 
+     * Retornar o identificador do gibi.
      * @return id
      */
     public int getId() {
         return id;
     }
     /**
-     * 
+     * Retornar a editora do gibi.
      * @return editora
      */
     public String getEditora() {
         return editora;
     }
     /**
-     * 
+     * Retornar o ano de publicação do gibi
      * @return ano de publicacao
      */
     public int getAnoPublicacao() {
         return anoPublicacao;
     }
     /**
-     * 
+     * Retornar o autor do gibi
      * @return autor
      */
     public String getAutor() {
@@ -81,14 +81,15 @@ public class Gibi {
    
     
     /**
-     * 
-     * @return debug 
+     * Método auxiliar para escrever em arquivo.
+     * @return String para escrever em arquivo.
      */
     @Override
     public String toString() {
-        return "Nome do Gibi: " + nome + "\n"
-               + "Ano de Publicacao: " + anoPublicacao
-               + "Editora" + editora;
+        return this.nome + "\n" +
+               this.editora + "\n" +
+               this.anoPublicacao + "\n" +
+               this.autor;
     }
    
 }
