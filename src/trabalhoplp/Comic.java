@@ -1,7 +1,7 @@
 /*
  * Trabalho de Paradigmas de Linguagens de Programação
  * Cadastro de Gibis
- * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe
+ * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe Ramos Palmuti
  * Classe Comic (Comic.java)
  */
 package trabalhoplp;
@@ -10,7 +10,7 @@ package trabalhoplp;
  * Classe Comic que herda atributos de Gibi e implementa ProprietarioDeGenero.
  * @author Ítalo Della Garza Silva
  * @author Giovani Ferreira Andrade Botelho
- * @author Felipe
+ * @author Felipe Ramos Palmuti
  */
 public class Comic extends Gibi implements ProprietarioDeGenero{
     

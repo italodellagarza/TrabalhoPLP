@@ -1,0 +1,160 @@
+5
+Yakohom
+Tóquio
+Japão
+882115427865
+PanCrop
+Nova York
+EUA
+732211786543
+Miniogge
+Londres
+Inglaterra
+678764567876
+Palala
+São Paulo
+Brasil
+557376545678
+Cabeleña
+Cidade do México
+México
+726898756345
+5
+Marciano e os Maricotas
+Cabeleña
+1992
+Ricardo Magno
+Dataset
+Palala
+1998
+Motta Junior
+Mini-Feijão
+Palala
+2002
+Zé Felipe de Morais Mello
+Acidente Acidental
+Palala
+1976
+José Cabra Cabral
+Morango Assassino
+Palala
+2007
+Maria Roberta Almeida
+5
+Harabi Shinomushem
+Yakohom
+2005
+Sakura Shokoyo
+Mecha
+128
+Seinen
+O Dragão Invencível
+Yakohom
+2007
+Sasake Kegaya
+Harém
+80
+Shonen
+The StarFlaggs
+Yakohom
+1990
+Maraki Makoko
+Mahō shōjo
+130
+Shoujo
+Os Cavalos Cabalísticos
+Yakohom
+1987
+Mokira Takeda
+Ecchi
+50
+Kodomo
+Maroki
+Yakohom
+2008
+Shenron
+Mecha
+120
+Shonen
+5
+Mr. Bobby na praça
+Miniogge
+2013
+Calvin McGwen
+Single Panel
+7
+1
+Jornal
+Aventuras do Papai Azul
+Miniogge
+1960
+Elizabeth Taylor
+Daily Strip
+4
+1
+Revista
+Ludmila
+Miniogge
+1986
+Anna Galberth
+Sunday Strip
+10
+1
+Panfleto
+Black Friday
+Miniogge
+2005
+Bob Smith
+Yonkoma
+3
+1
+Jornal
+Legend of Halo
+Miniogge
+2003
+Richard the Tall Man
+Yonkoma
+12
+1
+Revista
+5
+Super-Balão
+PanCrop
+2007
+Willian John
+Super-Herói
+34
+12
+Ouro
+Poder de Herói
+PanCrop
+1998
+Fancy Shapes
+Super-Herói
+76
+1
+Platina
+The BlueSnake
+PanCrop
+1995
+Fancy Shapes
+Super-Herói
+24
+7
+Ferro
+Ted, o Implacável
+PanCrop
+1973
+Billy Boy Jr.
+Faroeste
+56
+15
+Prata
+Jimmy, o Guarda
+PanCrop
+1986
+Toby Bob
+Crime
+30
+50
+Bronze

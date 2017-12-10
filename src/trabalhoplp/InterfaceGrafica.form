@@ -170,9 +170,6 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="campoCarregarArquivo">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCarregarArquivoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bntEscolherArquivo">
               <Properties>
@@ -218,8 +215,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace pref="82" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnMostrarTodosGibis" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMostrarSemTipo" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnMostrarSomenteMangas" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMostrarTodosGibis" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -239,7 +237,7 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btnMostrarTodosGibis" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMostrarSemTipo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnMostrarSomenteMangas" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -249,7 +247,9 @@
                               <Component id="btnMostrarSomenteComics" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnMostrarTodosGibis" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="292" max="-2" attributes="0"/>
                       <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
@@ -316,15 +316,15 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarSomenteMangasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="btnMostrarTodosGibis">
+            <Component class="javax.swing.JRadioButton" name="btnMostrarSemTipo">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="selMostrarTipo"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Mostrar todos os gibis"/>
+                <Property name="text" type="java.lang.String" value="Mostrar gibis sem tipo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarTodosGibisActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarSemTipoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="btnMostrarSomenteTirinhas">
@@ -347,6 +347,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarSomenteComicsActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="btnMostrarTodosGibis">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="selMostrarTipo"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Mostrar todos os gibis"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarTodosGibisActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -504,7 +515,7 @@
                               <Component id="cmpErasComic" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblNumQuadrinhos" max="32767" attributes="0"/>
+                              <Component id="lblNumQuadrinhos" pref="188" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmpNumQuadrinhos" min="-2" pref="196" max="-2" attributes="0"/>
                           </Group>
@@ -533,12 +544,17 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCadastrarGibi" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
-                          <Component id="msgCadastrarGibi" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCadastrarGibi" min="-2" pref="165" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="msgCadastrarGibi" min="-2" pref="331" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -552,54 +568,45 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtAutor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="campoAutor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="msgCadastrarGibi" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoAnoPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAutor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="caixaEditoras" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNumVolumes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmpNumVolumes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblGenero" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="caixaGenero" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNumPaginas" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmpNumPaginas" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblVeiculoPrimeiraPub" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="cmpVeiculoPrimeiraPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblTipologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="caixaTipologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoAnoPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblAutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="caixaEditoras" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblNumVolumes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmpNumVolumes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblGenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="caixaGenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNumPaginas" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmpNumPaginas" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblVeiculoPrimeiraPub" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="cmpVeiculoPrimeiraPublicacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblTipologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="caixaTipologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblEra" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -610,12 +617,14 @@
                                   <Component id="cmpNumQuadrinhos" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNumQuadrinhos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="msgCadastrarGibi" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnCadastrarGibi" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -636,6 +645,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoTitulo">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoTituloMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txtAutor">
               <Properties>
@@ -644,7 +656,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="campoAutor">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoAutorActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoAutorMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txtAno">
@@ -654,7 +666,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="campoAnoPublicacao">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoAnoPublicacaoActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoAnoPublicacaoMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="selManga">
@@ -677,8 +689,6 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selTirinhaItemStateChanged"/>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="selTirinhaStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selTirinhaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="selComic">
@@ -690,7 +700,6 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selComicItemStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selComicActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="selOutro">
@@ -703,7 +712,6 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selOutroItemStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selOutroActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAutor">
@@ -713,7 +721,7 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="caixaEditoras">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caixaEditorasActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="caixaEditorasMouseClicked"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -740,7 +748,7 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="caixaGeneroActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="caixaGeneroMouseClicked"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -753,16 +761,28 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cmpNumPaginas">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmpNumPaginasMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cmpNumVolumes">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmpNumVolumesMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cmpVeiculoPrimeiraPublicacao">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmpVeiculoPrimeiraPublicacaoMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblVeiculoPrimeiraPub">
               <Properties>
@@ -783,6 +803,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="caixaTipologiaMouseClicked"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -800,6 +823,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmpErasComicMouseClicked"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -814,13 +840,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="msgCadastrarGibi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inserido com Sucesso"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cmpNumQuadrinhos">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmpNumQuadrinhosMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNumQuadrinhos">
               <Properties>

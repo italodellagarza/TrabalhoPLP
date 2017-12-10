@@ -1,7 +1,7 @@
 /*
  * Trabalho de Paradigmas de Linguagens de Programação
  * Cadastro de Gibis
- * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe
+ * Ítalo Della Garza Silva, Giovani Ferreira Andrade Botelho, Felipe Ramos Palmuti
  * Classe CadastroGibis (CadastroGibis.java)
  */
 package trabalhoplp;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Classe para controlar o cadastro de gibis.
  * @author Ítalo Della Garza Silva
  * @author Giovani Ferreira Andrade Botelho
- * @author Felipe
+ * @author Felipe Ramos Palmuti
  */
 public class CadastroGibis {
     private int idGibis; // Para inserção automática de ids
@@ -165,19 +165,19 @@ public class CadastroGibis {
         }
         arqSaida.println(listaGibis.size());
         for(Gibi g: listaGibis) {
-           arqSaida.print(g.toString()); 
+           arqSaida.println(g.toString()); 
         }
         arqSaida.println(listaMangas.size());
         for(Manga m: listaMangas) {
-           arqSaida.print(m.toString()); 
+           arqSaida.println(m.toString()); 
         }
         arqSaida.println(listaTirinhas.size());
         for(Tirinha t: listaTirinhas) {
-           arqSaida.print(t.toString()); 
+           arqSaida.println(t.toString()); 
         }
         arqSaida.println(listaComics.size());
         for(Comic c: listaComics) {
-           arqSaida.print(c.toString()); 
+           arqSaida.println(c.toString()); 
         }
         arqSaida.close();
     }
@@ -408,7 +408,7 @@ public class CadastroGibis {
      * @param tel Telefone da editora a ser adicionada.
      */
     public void adicionarEditora(String nome, Endereco end, String tel) {
-        listaEditoras.add(new Editora((++idEditoras), nome, end, Integer.parseInt(tel)));
+        listaEditoras.add(new Editora((++idEditoras), nome, end, tel));
     }
     
     /**
@@ -416,7 +416,7 @@ public class CadastroGibis {
      * @return Tabela com todas as editoras para usar no jTable.
      */
     public Object[][] listarEditoras() {
-        Object[][] res = new Object[4][listaEditoras.size()];
+        Object[][] res = new Object[listaEditoras.size()][4];
         for (int i = 0; i < listaEditoras.size(); i++) {
             res[i] = listaEditoras.get(i).toRowTable();
         }
